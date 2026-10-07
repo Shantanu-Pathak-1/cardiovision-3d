@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRiskStore } from '../store/useRiskStore';
-import { Activity, SlidersHorizontal, FileText, LineChart, User, Pin, PinOff, Heart } from 'lucide-react';
+import { Activity, SlidersHorizontal, FileText, LineChart, User, Pin, PinOff, Heart, Home } from 'lucide-react';
 
 const TABS = [
   { id: '3d-model',  label: '3D Mapping & Vitals', icon: Activity,  desc: 'Unified Clinical View' },
@@ -9,7 +9,7 @@ const TABS = [
 ];
 
 export default function Sidebar() {
-  const { activeTab, setActiveTab, patient, riskScore, riskLevel } = useRiskStore();
+  const { activeTab, setActiveTab, patient, riskScore, riskLevel, setPageView } = useRiskStore();
   const [isHovered, setIsHovered] = useState(false);
   const [isPinned, setIsPinned] = useState(false);
 
@@ -44,18 +44,22 @@ export default function Sidebar() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            marginBottom: 24,
+            marginBottom: 20,
             paddingLeft: 4,
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div 
+            onClick={() => setPageView('landing')}
+            style={{ display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer' }}
+            title="Go to Landing Page"
+          >
             <div
               style={{
                 width: 36,
                 height: 36,
                 borderRadius: 8,
                 background: 'rgba(30, 41, 59, 0.8)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(56, 189, 248, 0.3)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -98,6 +102,53 @@ export default function Sidebar() {
             </button>
           )}
         </div>
+
+        {/* Home / Landing Page Button */}
+        <button
+          onClick={() => setPageView('landing')}
+          title="Back to Landing Page"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 12,
+            padding: '10px 12px',
+            borderRadius: 8,
+            fontSize: 13,
+            fontWeight: 600,
+            cursor: 'pointer',
+            background: 'rgba(56, 189, 248, 0.1)',
+            border: '1px solid rgba(56, 189, 248, 0.25)',
+            color: '#38bdf8',
+            transition: 'all 0.15s ease',
+            textAlign: 'left',
+            whiteSpace: 'nowrap',
+            width: '100%',
+            marginBottom: 12,
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.background = 'rgba(56, 189, 248, 0.2)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.background = 'rgba(56, 189, 248, 0.1)';
+          }}
+        >
+          <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 20, flexShrink: 0, color: '#38bdf8' }}>
+            <Home size={18} />
+          </span>
+
+          {isExpanded && (
+            <div style={{ minWidth: 0, flex: 1, overflow: 'hidden' }}>
+              <div style={{ color: '#f8fafc', fontSize: 12, fontWeight: 600 }}>
+                Landing Page
+              </div>
+              <div style={{ color: '#38bdf8', fontSize: 9, marginTop: 1 }}>
+                Return to Overview &amp; Home
+              </div>
+            </div>
+          )}
+        </button>
+
+        <div style={{ height: 1, background: 'rgba(255, 255, 255, 0.08)', marginBottom: 12 }} />
 
         {/* Navigation Tab Menu */}
         <nav style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -214,3 +265,4 @@ export default function Sidebar() {
     </aside>
   );
 }
+
