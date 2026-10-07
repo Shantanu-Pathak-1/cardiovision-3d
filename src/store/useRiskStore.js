@@ -71,6 +71,37 @@ export const useRiskStore = create((set, get) => ({
   ],
   isChatLoading: false,
 
+  // Navigation & Authentication Page State
+  pageView: 'landing', // 'landing' | 'login' | 'dashboard'
+  authUser: {
+    name: 'Dr. Alex Vance',
+    email: 'doctor@cardiovision.org',
+    role: 'Cardiologist',
+    isAuthenticated: false,
+  },
+
+  setPageView: (page) => set({ pageView: page }),
+  loginUser: (userData) => set({
+    authUser: {
+      ...userData,
+      isAuthenticated: true,
+    },
+    patient: {
+      ...get().patient,
+      name: userData.name || get().patient.name,
+    },
+    pageView: 'dashboard',
+  }),
+  logoutUser: () => set({
+    authUser: {
+      name: 'Guest User',
+      email: '',
+      role: 'Cardiologist',
+      isAuthenticated: false,
+    },
+    pageView: 'landing',
+  }),
+
   // Action: Set active tab
   setActiveTab: (tabId) => set({ activeTab: tabId }),
 
