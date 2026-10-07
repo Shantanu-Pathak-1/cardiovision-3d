@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 import { defineConfig, loadEnv } from 'vite'
 import path from 'path'
 
@@ -10,7 +11,7 @@ export default defineConfig(({ mode }) => {
   const groqKey = env.GROQ_API_KEY || localEnv.GROQ_API_KEY || ''
 
   return {
-    plugins: [react()],
+    plugins: [tailwindcss(), react()],
     define: {
       'import.meta.env.VITE_GEMINI_API_KEY': JSON.stringify(geminiKey),
       'import.meta.env.VITE_GROQ_API_KEY': JSON.stringify(groqKey),
