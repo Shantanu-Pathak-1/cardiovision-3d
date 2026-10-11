@@ -71,3 +71,136 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Typography and Accessibility Defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  letter-spacing: -0.02em;
+}
+
+/* Touch-friendly range inputs */
+input[type="range"] {
+  accent-color: var(--cyan);
+  cursor: pointer;
+}
+
+/* Mobile & Tablet Responsiveness Enhancements */
+@media (max-width: 1024px) {
+  .workspace-split {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  .vitals-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .heart-studio {
+    width: 100% !important;
+  }
+
+  .studio-stage {
+    height: 440px !important;
+    min-height: 380px !important;
+  }
+
+  .hero {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+    padding-top: 36px !important;
+  }
+
+  .auth-layout {
+    grid-template-columns: 1fr !important;
+    max-width: 580px !important;
+    margin-inline: auto !important;
+  }
+
+  .auth-visual {
+    min-height: 220px !important;
+    padding: 24px 20px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-nav-inner {
+    padding-inline: 16px !important;
+  }
+
+  .section-frame {
+    padding-inline: 16px !important;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 8vw, 42px) !important;
+    line-height: 1.18 !important;
+  }
+
+  .hero-subtitle {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  .signal-band {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    padding: 16px 0 !important;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .studio-stage {
+    height: 380px !important;
+    min-height: 320px !important;
+  }
+
+  .stage-tools {
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+  }
+
+  .stage-tools button {
+    height: 34px !important;
+    padding: 0 8px !important;
+    font-size: 11px !important;
+  }
+
+  .vitals-list {
+    gap: 16px !important;
+  }
+
+  .vital-slider input[type="range"] {
+    height: 8px !important;
+  }
+
+  .vitals-action-bar {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .vitals-action-bar button {
+    width: 100% !important;
+  }
+
+  .workspace-toolbar {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+
+  .workspace-tabs {
+    display: flex !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+  }
+
+  .workspace-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
