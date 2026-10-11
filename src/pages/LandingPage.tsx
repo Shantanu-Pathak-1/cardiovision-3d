@@ -71,13 +71,12 @@ export function LandingPage() {
             </div>
             <div className="telemetry-disclaimer"><Activity size={12}/> Not a live patient monitor. Connect a telemetry feed to display clinical signals.</div>
           </div>
-          <div className="hero-floating-mark"><span className="floating-mark-orbit"><span/></span><HeartPulse size={20}/><div><b>ANATOMY, IN MOTION</b><small>3D Heart Studio</small></div></div>
           <div className="visual-index"><span>FIG 01</span><span>CV—3D/01</span></div>
         </div>
       </section>
 
       <section className="signal-band section-frame" aria-label="Platform features at a glance">
-        <div className="signal-band-intro"><span className="eyebrow">THE CLINICAL SIGNAL</span><strong>One connected view<br/>of cardiovascular health.</strong></div>
+        <div className="signal-band-intro"><span className="eyebrow">THE CLINICAL SIGNAL</span><strong>One connected view <br/>of cardiovascular health.</strong></div>
         <div className="signal-metric"><span className="metric-glyph"><Activity size={17}/></span><div><strong>10-Yr</strong><span>CVD Risk Engine</span></div><ArrowDownRight size={15} className="signal-arrow"/></div>
         <div className="signal-metric"><span className="metric-glyph metric-rose"><Layers3 size={17}/></span><div><strong>38 <i>/</i> 62</strong><span>Dynamic split view</span></div><ArrowDownRight size={15} className="signal-arrow"/></div>
         <div className="signal-metric"><span className="metric-glyph metric-green"><BadgeCheck size={17}/></span><div><strong>100%</strong><span>HIPAA-safe architecture*</span></div><ArrowDownRight size={15} className="signal-arrow"/></div>
